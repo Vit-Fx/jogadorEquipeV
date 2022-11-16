@@ -1,0 +1,104 @@
+﻿@using jogadorEquipeV.Models
+@model modelJogador
+
+
+@using (Html.BeginForm("CadJogador", "Jogador", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.nmJog, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.nmJog, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <br />
+
+    <div class="form-group">
+        @Html.LabelFor(model => model, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("Posicoes", String.Empty)
+        </div>
+    </div>
+    <br />
+    <br />
+
+    <div class="form-group center">
+        <div>
+            <label class="control-label col-md-2" for="file">Foto</label>
+        </div>
+        <div class="col-md-10">
+            <input type="file" name="file" id="file" /> <br />
+        </div>
+    </div>
+    <br />
+    <br />
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.dsIdade, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.dsIdade, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <br />
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.dtNascJog, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.dtNascJog, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <br />
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.dsCidadeNascJog, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.dsCidadeNascJog, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <br />
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.dsEstadoNascJog, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.dsEstadoNascJog, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <br />
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.dsPaisNascJog, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.dsPaisNascJog, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <br />
+
+    <div class="form-group center">
+        <div class="col-md-10">
+            @ViewBag.msg <br />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Salvar" class="btn btn-success" />
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
