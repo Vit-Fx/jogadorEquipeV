@@ -16,17 +16,16 @@ namespace jogadorEquipeV.Dados
         public void cadJogador(modelJogador cm) 
         {
 
-            MySqlCommand cmd = new MySqlCommand("Call spInsJog(@nmJog, @cdPosicao, @ftJog, @dsIdade, @dtNascJog, @dsCidadeNasc, @dsEstadoNasc, @dsPaisNasc", cn.MyConectarBD());
+            MySqlCommand cmd = new MySqlCommand("Call spInsJog(@pNome, @pCdPosicao, @pFtJog, @pDsIdade, @pDtNascJog, @pDsCidadeNasc, @pDsEstadoNasc, @pDsPaisNasc)", cn.MyConectarBD());
 
-            
-            cmd.Parameters.Add("@nmJog", MySqlDbType.VarChar).Value = cm.nmJog;
-            cmd.Parameters.Add("@cdPosicao", MySqlDbType.Int32).Value = cm.cdPosicao;
-            cmd.Parameters.Add("@ftJog", MySqlDbType.VarChar).Value = cm.ftJog;
-            cmd.Parameters.Add("@dsIdade", MySqlDbType.VarChar).Value = cm.dsIdade;
-            cmd.Parameters.Add("@dtNascJog", MySqlDbType.Date).Value = cm.dtNascJog;
-            cmd.Parameters.Add("@dsCidadeNasc", MySqlDbType.VarChar).Value = cm.dsCidadeNascJog;
-            cmd.Parameters.Add("@dsEstadoNasc", MySqlDbType.VarChar).Value = cm.dsEstadoNascJog;
-            cmd.Parameters.Add("@dsPaisNasc", MySqlDbType.VarChar).Value = cm.dsPaisNascJog;
+            cmd.Parameters.Add("@pNome", MySqlDbType.VarChar).Value = cm.nmJog;
+            cmd.Parameters.Add("@pCdPosicao", MySqlDbType.VarChar).Value = cm.cdPosicao;
+            cmd.Parameters.Add("@pFtJog", MySqlDbType.VarChar).Value = cm.ftJog;
+            cmd.Parameters.Add("@pDsIdade", MySqlDbType.VarChar).Value = cm.dsIdade;
+            cmd.Parameters.Add("@pDtNascJog", MySqlDbType.VarChar).Value = cm.dtNascJog;
+            cmd.Parameters.Add("@pDsCidadeNasc", MySqlDbType.VarChar).Value = cm.dsCidadeNascJog;
+            cmd.Parameters.Add("@pDsEstadoNasc", MySqlDbType.VarChar).Value = cm.dsEstadoNascJog;
+            cmd.Parameters.Add("@pDsPaisNasc", MySqlDbType.VarChar).Value = cm.dsPaisNascJog;
             cmd.ExecuteNonQuery();
             cn.MyDesconectarBD();
 
@@ -48,7 +47,7 @@ namespace jogadorEquipeV.Dados
                 PosicaoList.Add(
                     new modelJogador
                     {
-                        cdPosicao = Convert.ToInt32(dr["cdPosicao"]),
+                        cdPosicao = Convert.ToString(dr["cdPosicao"]),
                         dsPosicao = Convert.ToString(dr["dsPosicao"])
                     });
             }

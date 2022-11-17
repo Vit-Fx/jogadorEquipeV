@@ -9,7 +9,7 @@ namespace jogadorEquipeV.Dados
 {
     public class conexao
     {
-        MySqlConnection cn = new MySqlConnection("Server = localhost; Database = bdJogadorEquipeV; User = root; Password = 12@Teste");
+        MySqlConnection cn = new MySqlConnection("Server=localhost; Database=bdjogadorequipev; User=root; Password =12345678");
         public static string msg;
 
         public MySqlConnection MyConectarBD()

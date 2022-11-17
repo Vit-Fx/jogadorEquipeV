@@ -37,6 +37,7 @@ namespace jogadorEquipeV.Controllers
             string file2 = "/Imagens/" + Path.GetFileName(file.FileName);
             string _path = Path.Combine(Server.MapPath("~/Imagens"), arquivo);
             file.SaveAs(_path);
+            cmJog.cdPosicao = Request["Posicoes"];
             cmJog.ftJog = file2;
             acJog.cadJogador(cmJog);
             ViewBag.msg = "Cadastro realizado com sucesso.";
