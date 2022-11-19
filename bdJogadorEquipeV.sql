@@ -13,10 +13,9 @@ CREATE TABLE tbJogador(
     cdPosicao INT,
     ftJog VARCHAR(255),
     dsIdade VARCHAR(3),
-    dtNascJog DATE,
+    dtNascJog VARCHAR(20),
     CONSTRAINT FOREIGN KEY (cdPosicao) REFERENCES tbPosicao(cdPosicao)
 );
-
 
 CREATE TABLE tbLocalNascJogador(
 	cdLocalNasc INT PRIMARY KEY AUTO_INCREMENT,
@@ -40,3 +39,6 @@ CREATE TABLE tbEquipeJogador(
     CONSTRAINT FOREIGN KEY(cdEquipe) REFERENCES tbEquipe(cdEquipe),
     CONSTRAINT FOREIGN KEY(cdJog) REFERENCES tbJogador(cdJog)
     );
+
+
+    

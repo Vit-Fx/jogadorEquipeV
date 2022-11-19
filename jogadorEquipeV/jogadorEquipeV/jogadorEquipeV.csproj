@@ -172,6 +172,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Jogador\CadJogador.cshtml" />
     <Content Include="Views\Jogador\AltJogador.cshtml" />
+    <Content Include="Views\Jogador\EditJogador.cshtml" />
+    <Content Include="Views\Jogador\ListarJogador.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

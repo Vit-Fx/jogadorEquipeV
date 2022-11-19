@@ -1,0 +1,73 @@
+﻿@model IEnumerable<jogadorEquipeV.Models.modelJogador>
+<h2>Jogadores</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.cdJog)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nmJog)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cdPosicao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ftJog)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dsIdade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dtNascJog)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dsCidadeNascJog)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dsEstadoNascJog)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dsPaisNascJog)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>
+                @Html.DisplayFor(modelItem => item.cdJog)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.nmJog)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.cdPosicao)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.ftJog)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.dsIdade)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.dtNascJog)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.dsCidadeNascJog)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.dsEstadoNascJog)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.dsPaisNascJog)
+            </th>
+
+            <td>
+                @Html.ActionLink("Atualizar", "EditJogador", new { id = item.cdJog }) |
+                @Html.ActionLink("Excluir", "excluirCliente", new { id = item.cdJog }, new { onclick = "return confirm('Deseja realmente excluir?');" })
+            </td>
+        </tr>
+    }
+
+</table>

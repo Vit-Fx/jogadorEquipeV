@@ -44,27 +44,42 @@ namespace jogadorEquipeV.Controllers
             return CadJogador();
         }
 
-        //public ActionResult AltJogador()
-        //{
-        //    return View();
-        //}
+        public ActionResult EditJogador(string id)
+        {
+           return View(acJog.GetJogador().Find(model => model.cdJog == id));
+        }
 
-        //[HttpPost]
-        //public ActionResult AltJogador()
-        //{
-        //    return View();
-        //}
+        [HttpPost]
+        public ActionResult EditJogador(int id, modelJogador cmJog, HttpPostedFileBase file)
+        {
+            acJog.CarregaTododsJogadores();
 
-        //public ActionResult ListarJogador()
-        //{
-        //    return View();
-        //}
+            if (file == null)
+            {
+                cmJog.cdJog = id.ToString();
+                acJog.atualizaJogadorSemFoto(cmJog);
+                ViewBag.msg = "Cadastro atualizado com sucesso";
+            }
+            else {
+                string arquivo = Path.GetFileName(file.FileName);
+                string file2 = "/Imagens/" + Path.GetFileName(file.FileName);
+                string _path = Path.Combine(Server.MapPath("~/Imagens"), arquivo);
+                file.SaveAs(_path);
+                cmJog.ftJog = file2;
+                cmJog.cdJog = id.ToString();
+                acJog.editJogador(cmJog);
+                ViewBag.msg = "Cadastro atualizado com sucesso.";
+            }
+            return View();
+        }
 
-        //[HttpPost]
-        //public ActionResult ListarJogador()
-        //{
-        //    return View();
-        //}
+        public ActionResult ListarJogador()
+        {
+            acJog.GetPosicao();
+           return View(acJog.GetJogador());
+        }
+
+       
 
         //public ActionResult ExcluirJogador()
         //    {
