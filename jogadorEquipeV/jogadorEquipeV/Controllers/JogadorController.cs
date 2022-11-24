@@ -52,7 +52,7 @@ namespace jogadorEquipeV.Controllers
         [HttpPost]
         public ActionResult EditJogador(int id, modelJogador cmJog, HttpPostedFileBase file)
         {
-            acJog.CarregaTododsJogadores();
+            acJog.CarregaTodosJogadores();
 
             if (file == null)
             {
@@ -65,26 +65,29 @@ namespace jogadorEquipeV.Controllers
                 string file2 = "/Imagens/" + Path.GetFileName(file.FileName);
                 string _path = Path.Combine(Server.MapPath("~/Imagens"), arquivo);
                 file.SaveAs(_path);
+                cmJog.cdPosicao = Request["Posicoes"];
                 cmJog.ftJog = file2;
                 cmJog.cdJog = id.ToString();
                 acJog.editJogador(cmJog);
                 ViewBag.msg = "Cadastro atualizado com sucesso.";
             }
+
             return View();
+
         }
 
         public ActionResult ListarJogador()
         {
-            acJog.GetPosicao();
            return View(acJog.GetJogador());
         }
 
        
 
-        //public ActionResult ExcluirJogador()
-        //    {
-        //        return View();
-        //    }
+        public ActionResult ExcluirJogador(int id)
+        {
+            acJog.DeletarJogador(id);
+            return RedirectToAction("ListarJogador");
+        }
 
     }
 }

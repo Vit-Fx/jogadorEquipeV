@@ -1,4 +1,4 @@
-﻿
+﻿@model jogadorEquipeV.Models.modelJogador
 @{
     ViewBag.Title = "EditJogador";
 }
@@ -6,3 +6,111 @@
 <h2>EditJogador</h2>
 
 
+@using (Html.BeginForm("EditJogador", "Jogador", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group space-around-flex">
+        @Html.LabelFor(model => model.nmJog, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.nmJog, "", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.nmJog, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <br />
+    <br />
+
+
+    <div class="form-group space-around-flex">
+        @Html.LabelFor(model => model, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("Posicoes", String.Empty)
+            @Html.ValidationMessageFor(model => model, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <br />
+
+    <div class="form-group center">
+        <div>
+            <label class="control-label col-md-2" for="file">Foto</label>
+        </div>
+        <div class="col-md-10">
+            <input type="file" name="file" id="file" /> <br />
+        </div>
+    </div>
+    <br />
+    <br />
+
+    <div class="form-group space-around-flex">
+        @Html.LabelFor(model => model.dsIdade, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.dsIdade, "", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.dsIdade, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <br />
+
+    <div class="form-group space-around-flex">
+        @Html.LabelFor(model => model.dtNascJog, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.dtNascJog, "", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.dtNascJog, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <br />
+
+    <div class="form-group space-around-flex">
+        @Html.LabelFor(model => model.dsCidadeNascJog, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.dsCidadeNascJog, "", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.dsCidadeNascJog, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <br />
+
+    <div class="form-group space-around-flex">
+        @Html.LabelFor(model => model.dsEstadoNascJog, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.dsEstadoNascJog, "", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.dsEstadoNascJog, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <br />
+
+    <div class="form-group space-around-flex">
+        @Html.LabelFor(model => model.dsPaisNascJog, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.dsPaisNascJog, "", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.dsPaisNascJog, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <br />
+
+    <div class="form-group center">
+        <div class="col-md-10">
+            @ViewBag.msg <br />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Salvar" class="btn btn-success" />
+        </div>
+    </div>
+</div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

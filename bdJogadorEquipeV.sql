@@ -40,5 +40,4 @@ CREATE TABLE tbEquipeJogador(
     CONSTRAINT FOREIGN KEY(cdJog) REFERENCES tbJogador(cdJog)
     );
 
-
     

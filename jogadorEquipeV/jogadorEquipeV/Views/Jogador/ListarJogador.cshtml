@@ -65,7 +65,7 @@
 
             <td>
                 @Html.ActionLink("Atualizar", "EditJogador", new { id = item.cdJog }) |
-                @Html.ActionLink("Excluir", "excluirCliente", new { id = item.cdJog }, new { onclick = "return confirm('Deseja realmente excluir?');" })
+                @Html.ActionLink("Excluir", "ExcluirJogador", new { id = item.cdJog }, new { onclick = "return confirm('Deseja realmente excluir?');" })
             </td>
         </tr>
     }

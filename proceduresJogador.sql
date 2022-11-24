@@ -85,4 +85,19 @@ DELIMITER $$
 		END IF;
 	END $$
 DELIMITER ;
-  
+
+
+-- Proc de deletar Jogador
+
+DROP PROCEDURE IF EXISTS deletarJog;
+DELIMITER $$
+CREATE PROCEDURE deletarJog(
+	pCodJog INT
+)
+	BEGIN
+		SET FOREIGN_KEY_CHECKS = 0;
+        DELETE FROM tbJogador where cdJog = pCodJog;
+        SET FOREIGN_KEY_CHECKS = 1;
+	END $$
+DELIMITER ;
+

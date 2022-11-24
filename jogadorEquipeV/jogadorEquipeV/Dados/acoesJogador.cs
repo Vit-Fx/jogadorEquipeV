@@ -42,7 +42,7 @@ namespace jogadorEquipeV.Dados
             cmd.Parameters.Add("@ftJog", MySqlDbType.VarChar).Value = cm.ftJog;
         }
 
-        public void editJogador(modelJogador cm)
+        public bool editJogador(modelJogador cm)
         {
 
             MySqlCommand cmd = new MySqlCommand("Call spEditJog(@pNome, @pCdPosicao, @pFtJog, @DsIdade," +
@@ -56,12 +56,18 @@ namespace jogadorEquipeV.Dados
             cmd.Parameters.Add("@pDsCidadeNasc", MySqlDbType.VarChar).Value = cm.dsCidadeNascJog;
             cmd.Parameters.Add("@pDsEstadoNasc", MySqlDbType.VarChar).Value = cm.dsEstadoNascJog;
             cmd.Parameters.Add("@pDsPaisNasc", MySqlDbType.VarChar).Value = cm.dsPaisNascJog;
-            cmd.ExecuteNonQuery();
+
+            int i = cmd.ExecuteNonQuery();
             cn.MyDesconectarBD();
+
+            if (i >= 1)
+                return true;
+            else
+                return false;
 
         }
 
-        public void CarregaTododsJogadores()
+        public void CarregaTodosJogadores()
         {
 
             List<SelectListItem> jogadores = new List<SelectListItem>();
@@ -114,6 +120,7 @@ namespace jogadorEquipeV.Dados
                     {
                         cdJog = Convert.ToString(dr["cdJog"]),
                         nmJog = Convert.ToString(dr["nmJog"]),
+                        cdPosicao = Convert.ToString(dr["cdPosicao"]),
                         ftJog = Convert.ToString(dr["ftJog"]),
                         dsIdade = Convert.ToString(dr["dsIdade"]),
                         dtNascJog = Convert.ToString(dr["dtNascJog"]),
@@ -123,6 +130,21 @@ namespace jogadorEquipeV.Dados
                     });
             }
             return JogadorList;
+        }
+
+        public bool DeletarJogador(int id) {
+
+            MySqlCommand cmd = new MySqlCommand("Call deletarJog(@id)", cn.MyConectarBD());
+
+            cmd.Parameters.AddWithValue("@id", id);
+
+            int i = cmd.ExecuteNonQuery();
+            cn.MyDesconectarBD();
+
+            if (i >= 1)
+                return true;
+            else
+                return false;
         }
 
     }
